@@ -2,11 +2,7 @@
   "name": "@rawura/emails",
   "version": "1.1.0",
   "private": true,
-  "description": "Shared transactional email templates, rendering engine and payload types for the Rawura platform",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/OEPlast/emails.git"
-  },
+  "description": "Transactional email templates, rendering engine and payload types for the Doreti platform (forked from the Rawura emails package; the package name is kept so Main-server/event-bus imports stay unchanged)",
   "license": "UNLICENSED",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
