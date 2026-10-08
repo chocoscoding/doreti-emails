@@ -1,0 +1,8 @@
+{{#> layout title="Back in stock"}}
+<h1 style="margin:0 0 12px 0; font-size:22px; line-height:30px;">Back in stock</h1>
+<p>Hi {{greetingName firstName}}, {{#if (eq products.length 1)}}the item you asked about is{{else}}the items you asked about are{{/if}} available again.</p>
+
+{{> items items=products images=true}}
+
+{{> button href=shopLink label="Shop now"}}
+{{/layout}}

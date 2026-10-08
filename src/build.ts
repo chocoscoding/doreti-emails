@@ -50,6 +50,11 @@ const PREHEADERS: Record<EmailKind, string> = {
   'abandoned-cart': 'Your cart is still waiting.',
   coupon: 'A discount code, just for you.',
   wishlist: 'Something from your wishlist is available again.',
+  'back-in-stock': 'The item you asked about is available again.',
+  'contact-received': 'We have your message and will reply soon.',
+  'contact-reply': 'A reply to your message.',
+  'support-new-ticket': 'A new message from the contact form.',
+  'password-reset-link': 'Your password reset link is inside.',
 };
 
 /**

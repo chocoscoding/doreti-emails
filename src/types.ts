@@ -284,6 +284,46 @@ export interface WishlistData extends EmailUser {
   viewWishlistLink: string;
 }
 
+/** Products the customer asked to hear about are available again (a requested alert, so transactional). */
+export interface BackInStockData extends EmailUser {
+  products: EmailProduct[];
+  /** Link to the product page (or the shop when several products are listed). */
+  shopLink: string;
+}
+
+/** Confirmation that a contact-form message reached the store. */
+export interface ContactReceivedData extends EmailUser {
+  ticketNumber: string;
+  topic: string;
+  message: string;
+  orderNumber?: string;
+}
+
+/** A staff reply to a contact ticket. */
+export interface ContactReplyData extends EmailUser {
+  ticketNumber: string;
+  reply: string;
+}
+
+/** Internal: a new contact ticket, sent to the store's support address. */
+export interface SupportNewTicketData extends EmailUser {
+  ticketNumber: string;
+  customerName: string;
+  customerEmail: string;
+  customerPhone?: string;
+  topic: string;
+  orderNumber?: string;
+  message: string;
+  /** Link to the ticket in the admin. */
+  adminLink: string;
+}
+
+/** Password reset by link (the code-based flow uses `forgot-password`). */
+export interface PasswordResetLinkData extends EmailUser {
+  resetLink: string;
+  expiresInMinutes: number;
+}
+
 /* ------------------------------------------------------------------ */
 /* Kind → payload map                                                  */
 /* ------------------------------------------------------------------ */
@@ -312,6 +352,11 @@ export interface EmailPayloadMap {
   'abandoned-cart': AbandonedCartData;
   coupon: CouponData;
   wishlist: WishlistData;
+  'back-in-stock': BackInStockData;
+  'contact-received': ContactReceivedData;
+  'contact-reply': ContactReplyData;
+  'support-new-ticket': SupportNewTicketData;
+  'password-reset-link': PasswordResetLinkData;
 }
 
 export type EmailKind = keyof EmailPayloadMap;

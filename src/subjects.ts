@@ -56,6 +56,13 @@ const registry: SubjectRegistry = {
     d.products.length === 1
       ? `${d.products[0].name} is back in stock`
       : `${d.products.length} wishlist items are back in stock`,
+
+  'back-in-stock': (d) =>
+    d.products.length === 1 ? `${d.products[0].name} is back in stock` : `${d.products.length} items are back in stock`,
+  'contact-received': (d) => `We received your message — ticket ${d.ticketNumber}`,
+  'contact-reply': (d) => `Re: your message — ticket ${d.ticketNumber}`,
+  'support-new-ticket': (d) => `New ${d.topic} message from ${d.customerName} — ${d.ticketNumber}`,
+  'password-reset-link': (_d, brand) => `Reset your ${brand.storeName} password`,
 };
 
 export function buildSubject<K extends EmailKind>(kind: K, data: EmailPayloadMap[K], brand: EmailBrand): string {

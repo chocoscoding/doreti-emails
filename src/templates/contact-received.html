@@ -1,0 +1,9 @@
+{{#> layout title="We received your message"}}
+<h1 style="margin:0 0 12px 0; font-size:22px; line-height:30px;">We received your message</h1>
+<p>Hi {{greetingName firstName}}, thanks for getting in touch with {{brand.storeName}}. Your ticket number is <strong>{{ticketNumber}}</strong>{{#if orderNumber}} (order {{orderNumber}}){{/if}}.</p>
+
+<p style="margin:16px 0 4px 0; font-weight:600;">Your message</p>
+<p style="white-space:pre-line; background:#f9fafb; padding:12px; border-radius:6px;">{{message}}</p>
+
+<p>We'll reply to this address as soon as we can.</p>
+{{/layout}}

@@ -362,6 +362,55 @@ const registry: TextRegistry = {
       '',
       `View your wishlist: ${d.viewWishlistLink}`
     ),
+
+  'back-in-stock': (d) =>
+    lines(
+      `Hi ${greetingName(d.firstName)},`,
+      '',
+      d.products.length === 1 ? 'Good news, the item you asked about is back in stock:' : 'Good news, these items are back in stock:',
+      productLines(d.products),
+      '',
+      `Shop now: ${d.shopLink}`
+    ),
+
+  'contact-received': (d, brand) =>
+    lines(
+      `Hi ${greetingName(d.firstName)},`,
+      '',
+      `Thanks for getting in touch with ${brand.storeName}. Your ticket number is ${d.ticketNumber}.`,
+      d.orderNumber ? `Order: ${d.orderNumber}` : null,
+      '',
+      'Your message:',
+      d.message,
+      '',
+      'We will reply to this address as soon as we can.'
+    ),
+
+  'contact-reply': (d) =>
+    lines(`Hi ${greetingName(d.firstName)},`, '', d.reply, '', `Ticket: ${d.ticketNumber}`),
+
+  'support-new-ticket': (d) =>
+    lines(
+      `New ${d.topic} message — ${d.ticketNumber}`,
+      '',
+      `From: ${d.customerName} <${d.customerEmail}>`,
+      d.customerPhone ? `Phone: ${d.customerPhone}` : null,
+      d.orderNumber ? `Order: ${d.orderNumber}` : null,
+      '',
+      d.message,
+      '',
+      `Open in the admin: ${d.adminLink}`
+    ),
+
+  'password-reset-link': (d, brand) =>
+    lines(
+      `Hi ${greetingName(d.firstName)},`,
+      '',
+      `Reset your ${brand.storeName} password here: ${d.resetLink}`,
+      `The link expires in ${d.expiresInMinutes} minutes and works once.`,
+      '',
+      'If you did not request a password reset, ignore this email — your password has not changed.'
+    ),
 };
 
 export function buildText<K extends EmailKind>(

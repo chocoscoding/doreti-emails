@@ -247,6 +247,48 @@ export const fixtures: { [K in EmailKind]: EmailPayloadMap[K] } = {
     products: [chair],
     viewWishlistLink: 'https://www.rawura.com/my-account?tab=wishlist',
   },
+
+  'back-in-stock': {
+    email: 'ada.okonkwo@example.com',
+    firstName: 'Ada',
+    products: [chair],
+    shopLink: 'https://www.example.com/products/chair',
+  },
+
+  'contact-received': {
+    email: 'ada.okonkwo@example.com',
+    firstName: 'Ada',
+    ticketNumber: 'DT-000123',
+    topic: 'sizing',
+    orderNumber: 'DR-2610-00012',
+    message: 'Does the ring run small?\nI usually wear a 7.',
+  },
+
+  'contact-reply': {
+    email: 'ada.okonkwo@example.com',
+    firstName: 'Ada',
+    ticketNumber: 'DT-000123',
+    reply: 'Hi Ada, it runs true to size, so a 7 will fit.\n\nThanks!',
+  },
+
+  'support-new-ticket': {
+    email: 'support@example.com',
+    ticketNumber: 'DT-000123',
+    customerName: 'Ada Okonkwo',
+    customerEmail: 'ada.okonkwo@example.com',
+    customerPhone: '+2348012345678',
+    topic: 'sizing',
+    orderNumber: 'DR-2610-00012',
+    message: 'Does the ring run small?',
+    adminLink: 'https://admin.example.com/support/tickets/1',
+  },
+
+  'password-reset-link': {
+    email: 'ada.okonkwo@example.com',
+    firstName: 'Ada',
+    resetLink: 'https://www.example.com/reset-password?token=abc',
+    expiresInMinutes: 60,
+  },
 };
 
 /**
