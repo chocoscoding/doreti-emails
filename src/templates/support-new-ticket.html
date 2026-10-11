@@ -1,7 +1,7 @@
 {{#> layout title="New contact message"}}
 <h1 style="margin:0 0 12px 0; font-size:22px; line-height:30px;">New {{topic}} message &middot; {{ticketNumber}}</h1>
 <p><strong>{{customerName}}</strong> &lt;{{customerEmail}}&gt;{{#if customerPhone}} &middot; {{customerPhone}}{{/if}}{{#if orderNumber}} &middot; order {{orderNumber}}{{/if}}</p>
-<p style="white-space:pre-line; background:#f9fafb; padding:12px; border-radius:6px;">{{message}}</p>
+<p class="panel" style="white-space:pre-line; background:#f2f2f2; padding:14px 16px; border-left:3px solid #000000;">{{message}}</p>
 
 {{> button href=adminLink label="Open ticket"}}
 {{/layout}}

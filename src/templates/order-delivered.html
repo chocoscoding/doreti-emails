@@ -7,6 +7,6 @@
 {{> button href=viewOrderLink label="View your order"}}
 
 {{#if startReturnLink}}
-<p class="muted" style="font-size:13px; line-height:20px; color:#6b7280;">Something not right? {{#if returnWindowDays}}You have {{returnWindowDays}} days to <a href="{{startReturnLink}}" style="color:#6f9420;">start a return</a>.{{else}}<a href="{{startReturnLink}}" style="color:#6f9420;">Start a return</a> from your order page.{{/if}}</p>
+<p class="muted" style="font-size:13px; line-height:20px; color:#5a5a5a;">Something not right? {{#if returnWindowDays}}You have {{returnWindowDays}} days to <a class="ink" href="{{startReturnLink}}" style="color:#000000; text-decoration:underline;">start a return</a>.{{else}}<a class="ink" href="{{startReturnLink}}" style="color:#000000; text-decoration:underline;">Start a return</a> from your order page.{{/if}}</p>
 {{/if}}
 {{/layout}}

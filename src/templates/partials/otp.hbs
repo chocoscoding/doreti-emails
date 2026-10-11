@@ -2,7 +2,7 @@
   One-time code.
   Usage: {{> otp code=otpCode expiresInMinutes=expiresInMinutes}}
 --}}
-<p class="ink" style="margin:4px 0 6px 0; font-family:'SF Mono', Menlo, Consolas, monospace; font-size:32px; line-height:40px; font-weight:700; letter-spacing:6px; color:#1B1B1B;">{{code}}</p>
+<p class="ink" style="margin:4px 0 6px 0; font-family:'SF Mono', Menlo, Consolas, monospace; font-size:32px; line-height:40px; font-weight:700; letter-spacing:6px; color:#000000;">{{code}}</p>
 {{#if expiresInMinutes}}
-<p class="muted" style="font-size:13px; line-height:20px; color:#6b7280;">This code expires in {{expiresInMinutes}} minutes.</p>
+<p class="muted" style="font-size:13px; line-height:20px; color:#5a5a5a;">This code expires in {{expiresInMinutes}} minutes.</p>
 {{/if}}

@@ -2,10 +2,10 @@
 <h1 style="margin:0 0 12px 0; font-size:22px; line-height:30px;">{{discount}}% off your next order</h1>
 <p>Hi {{greetingName firstName}}, here's a code for {{pluralize productCount "product"}} at {{brand.storeName}}.</p>
 
-<p class="ink" style="margin:4px 0 6px 0; font-family:'SF Mono', Menlo, Consolas, monospace; font-size:26px; line-height:34px; font-weight:700; letter-spacing:3px; word-break:break-all; color:#1B1B1B;">{{couponCode}}</p>
+<p class="ink" style="margin:4px 0 6px 0; font-family:'SF Mono', Menlo, Consolas, monospace; font-size:26px; line-height:34px; font-weight:700; letter-spacing:3px; word-break:break-all; color:#000000;">{{couponCode}}</p>
 <p>Valid until {{formatDateOnly expiryDate}}{{#if minimumSpend}} on orders over {{currency minimumSpend}}{{/if}}.</p>
 
 {{> button href=useCouponLink label="Shop with this code"}}
 
-<p class="muted" style="font-size:13px; line-height:20px; color:#6b7280;">Enter the code at checkout. One use per customer.</p>
+<p class="muted" style="font-size:13px; line-height:20px; color:#5a5a5a;">Enter the code at checkout. One use per customer.</p>
 {{/layout}}
