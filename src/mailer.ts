@@ -68,7 +68,16 @@ export class Mailer {
     this.maxAttempts = Math.max(1, options.maxAttempts ?? 3);
   }
 
+  /**
+   * Sets up the SMTP transport. Never stops the service: with no SMTP_HOST, email stays off
+   * (every send logs and returns false) until it is configured; an SMTP server that can't be
+   * reached at boot is logged and retried on each send, so a mail outage can't take the API down.
+   */
   async initialize(): Promise<void> {
+    if (!process.env.SMTP_HOST?.trim()) {
+      this.log.warn('[email] SMTP_HOST is not set: email is off until it is configured');
+      return;
+    }
     this.transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT ?? 587),
@@ -79,8 +88,12 @@ export class Mailer {
           : undefined,
     });
 
-    await this.transporter.verify();
-    this.log.info('[email] transporter verified');
+    try {
+      await this.transporter.verify();
+      this.log.info('[email] transporter verified');
+    } catch (error) {
+      this.log.error('[email] SMTP server could not be verified at startup; sends will keep trying', error);
+    }
   }
 
   /**
