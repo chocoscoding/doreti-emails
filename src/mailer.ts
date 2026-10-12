@@ -58,6 +58,21 @@ function isTransient(error: unknown): boolean {
 
 const wait = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
 
+/** Emails about an order (sent from FROM_EMAIL_ORDERS when it is set). */
+const ORDER_KINDS: ReadonlySet<string> = new Set([
+  'order-confirmation',
+  'payment-receipt',
+  'payment-failed',
+  'order-shipped',
+  'order-delivered',
+  'delivery-failed',
+  'order-cancelled',
+  'return-requested',
+  'return-status',
+  'order-refunded',
+  'rating',
+]);
+
 export class Mailer {
   private transporter: Transporter | null = null;
   private readonly log: MailerLogger;
@@ -142,7 +157,10 @@ export class Mailer {
     }
 
     const brand = await this.options.getBrand();
-    const fromAddress = process.env.FROM_EMAIL ?? brand.supportEmail;
+    // Order emails can come from their own address (FROM_EMAIL_ORDERS, e.g. orders@); everything
+    // else — sign-up, password, contact, marketing — from FROM_EMAIL (e.g. hello@).
+    const orderSender = ORDER_KINDS.has(kind) ? process.env.FROM_EMAIL_ORDERS?.trim() : undefined;
+    const fromAddress = orderSender || process.env.FROM_EMAIL || brand.supportEmail;
 
     for (let attempt = 1; attempt <= this.maxAttempts; attempt += 1) {
       try {

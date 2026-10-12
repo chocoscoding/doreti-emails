@@ -1,6 +1,6 @@
 {
   "name": "@rawura/emails",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "private": true,
   "description": "Transactional email templates, rendering engine and payload types for the Doreti platform (forked from the Rawura emails package; the package name is kept so Main-server/event-bus imports stay unchanged)",
   "license": "UNLICENSED",
